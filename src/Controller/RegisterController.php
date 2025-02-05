@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
 class RegisterController extends AbstractController
 {
     #[Route('/api/register', name: 'api_register', methods: ['POST'])]
@@ -33,14 +34,20 @@ class RegisterController extends AbstractController
                 'message' => (string) $errors
             ], Response::HTTP_BAD_REQUEST);
         }
-
+        
+        $existingUser = $entityManager->getRepository(User::class)->findOneBy(['email' => $data['email']]);
+        if ($existingUser) {
+            return $this->json([
+                'message' => 'Email already in use'
+            ], Response::HTTP_CONFLICT);
+        }
         $user = new User();
         $user->setEmail($data['email']);
         $user->setPassword($passwordHasher->hashPassword($user, $data['password']));
 
         $entityManager->persist($user);
         $entityManager->flush();
-
+        
         return $this->json([
             'message' => 'User registered successfully'
         ], Response::HTTP_CREATED);
