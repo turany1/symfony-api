@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+if (!ini_get('date.timezone')) {
+    ini_set('date.timezone', 'UTC');
+}
+
+if (is_file(dirname(__DIR__).'/vendor/phpunit/phpunit/phpunit')) {
+    require dirname(__DIR__).'/vendor/phpunit/phpunit/phpunit';
+} else {
+    echo "Unable to find the `phpunit` script in `vendor/phpunit/phpunit`.\n";
+    exit(1);
+}
