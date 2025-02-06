@@ -4,10 +4,4 @@ default:
             contexts:
                 - FeatureContext
             paths:
-                - %paths.base%/features
-    extensions:
-        Behat\Symfony2Extension: ~
-        Behat\MinkExtension:
-            default_session: symfony
-            symfony: ~
-            base_url: http://localhost:8000
+                - "C:/blog_app/symfony-api/features"

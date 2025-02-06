@@ -63,4 +63,8 @@ Custom CLI commands :
 
 PHP Unit tests :
 
-    php bin/phpunit
+        php bin/phpunit
+
+Bhat tests : 
+
+        vendor/bin/behat

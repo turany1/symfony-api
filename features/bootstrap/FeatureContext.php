@@ -1,62 +1,42 @@
 <?php
-/*
+
 use Behat\Behat\Context\Context;
-use Behat\MinkExtension\Context\MinkContext;
-use Symfony\Component\HttpKernel\KernelInterface;
-use App\Entity\User;
-use App\Entity\Article;
 
-class FeatureContext extends MinkContext implements Context
+class FeatureContext implements Context
 {
-    private $kernel;
-
-    public function __construct(KernelInterface $kernel)
+    /**
+     * @Given I am on :path
+     */
+    public function iAmOn($path)
     {
-        $this->kernel = $kernel;
+        // Implement navigation to the given path
+        echo "Navigating to $path\n";
     }
 
     /**
-     * @Given there is an article titled :title with content :content
-     *//*
-    public function thereIsAnArticleTitledWithContent($title, $content)
+     * @When I fill in :field with :value
+     */
+    public function iFillInWith($field, $value)
     {
-        $entityManager = $this->kernel->getContainer()->get('doctrine')->getManager();
-        $author = $entityManager->getRepository(User::class)->findOneBy(['email' => 'author@example.com']);
-        if (!$author) {
-            $author = new User();
-            $author->setEmail('author@example.com');
-            $author->setRoles(['ROLE_AUTHOR']);
-            $entityManager->persist($author);
-            $entityManager->flush();
-        }
-
-        $article = new Article();
-        $article->setTitle($title);
-        $article->setContent($content);
-        $article->setAuthor($author);
-        $entityManager->persist($article);
-        $entityManager->flush();
+        // Implement filling in the given field with the given value
+        echo "Filling in $field with $value\n";
     }
 
     /**
-     * @Given there are articles titled :titleOne, :titleTwo, and :titleThree
-     *//*
-    public function thereAreArticlesTitledAnd($titleOne, $titleTwo, $titleThree)
+     * @When I press :button
+     */
+    public function iPress($button)
     {
-        $this->thereIsAnArticleTitledWithContent($titleOne, 'Content for ' . $titleOne);
-        $this->thereIsAnArticleTitledWithContent($titleTwo, 'Content for ' . $titleTwo);
-        $this->thereIsAnArticleTitledWithContent($titleThree, 'Content for ' . $titleThree);
+        // Implement pressing the given button
+        echo "Pressing $button\n";
     }
 
     /**
-     * @Given I am logged in as :email with :password
-     *//*
-    public function iAmLoggedInAsWith($email, $password)
+     * @Then I should see :text
+     */
+    public function iShouldSee($text)
     {
-        $this->visit('/login');
-        $this->fillField('email', $email);
-        $this->fillField('password', $password);
-        $this->pressButton('Login');
+        // Implement checking if the given text is visible
+        echo "Checking if I see $text\n";
     }
 }
-*/
