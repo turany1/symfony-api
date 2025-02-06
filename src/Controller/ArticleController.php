@@ -82,20 +82,17 @@ class ArticleController extends AbstractController
     #[Route('/api/article/{id}', name: 'delete_article', methods: ['DELETE'])]
     public function deleteArticle(EntityManagerInterface $entityManager, int $id): Response
     {
-        // Fetch the article by ID
         $article = $entityManager->getRepository(Article::class)->find($id);
         if (!$article) {
             return $this->json(['message' => 'Article not found'], Response::HTTP_NOT_FOUND);
         }
 
-        // Get the logged-in user
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
         if (!$user instanceof UserInterface || $user->getEmail() !== $article->getAuthor()) {
             return $this->json(['message' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
         }
 
-        // Remove the article from the database
         $entityManager->remove($article);
         $entityManager->flush();
 
