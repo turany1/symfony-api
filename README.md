@@ -51,6 +51,12 @@ There is an instruction how to run my application :
 
 10. Open POSTMAN and use the API. 
 
+The collection of requests in Postman is located : 
+
+        \symfony-api\symfony-app.postman_collection.json
+
+
+
 Data Fixtures :
     
     Load Data : php bin/console doctrine:fixtures:load
