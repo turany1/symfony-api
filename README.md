@@ -45,7 +45,7 @@ There is an instruction how to run my application :
 
 8. Start the Development Server : 
 
-        php bin/console server:run
+        symfony server:start
 
 9. Open a web browser and navigate to http://localhost:8000 to access the application.
 
@@ -54,8 +54,6 @@ There is an instruction how to run my application :
 The collection of requests in Postman is located : 
 
         \symfony-api\symfony-app.postman_collection.json
-
-
 
 Data Fixtures :
     
