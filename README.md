@@ -10,6 +10,8 @@ For this project I used :
 
 - MySQL Server 8.0
 
+- OpenSSL 3.4.0
+
 
 There is an instruction how to run my application :
 
