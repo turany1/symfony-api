@@ -1,4 +1,6 @@
 My Symfony REST API Project
+Author : Stepan Turani
+
 
 For this project I used :
 
@@ -45,7 +47,7 @@ There is an instruction how to run my application :
 
         php bin/console lexik:jwt:generate-keypair
 
-8. Start the Development Server : 
+8. Start the Server : 
 
         symfony server:start
 
